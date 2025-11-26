@@ -81,7 +81,7 @@
     let results = [];
     let editId = null;
 
-    // Load data
+
     function loadData() {
       let stuData = localStorage.getItem('students');
       if (stuData) students = JSON.parse(stuData);
@@ -93,14 +93,14 @@
       if (resData) results = JSON.parse(resData);
     }
 
-    // Save data
+
     function saveData() {
       localStorage.setItem('students', JSON.stringify(students));
       localStorage.setItem('sections', JSON.stringify(sections));
       localStorage.setItem('results', JSON.stringify(results));
     }
 
-    // Show results
+
     function showResults() {
       let tbody = document.getElementById('resultsTableBody');
       tbody.innerHTML = '';
@@ -128,7 +128,7 @@
       });
     }
 
-    // Fill dropdowns
+
     function fillDropdowns() {
       let stuSelect = document.getElementById('resultStudent');
       stuSelect.innerHTML = '';
@@ -143,17 +143,17 @@
       });
     }
 
-    // Show modal
+
     function showModal() {
       document.getElementById('resultModal').style.display = 'block';
     }
 
-    // Hide modal
+
     function hideModal() {
       document.getElementById('resultModal').style.display = 'none';
     }
 
-    // Add result
+
     function addResult(studentId, section, subject, marks) {
       let result = {
         id: Date.now().toString(),
@@ -167,7 +167,7 @@
       showResults();
     }
 
-    // Edit result
+
     function editResult(id) {
       let result = results.find(r => r.id === id);
       if (result) {
@@ -182,7 +182,7 @@
       }
     }
 
-    // Update result
+
     function updateResult(id, studentId, section, subject, marks) {
       let index = results.findIndex(r => r.id === id);
       if (index !== -1) {
@@ -195,7 +195,7 @@
       }
     }
 
-    // Delete result
+
     function deleteResult(id) {
       if (confirm('Delete this result?')) {
         results = results.filter(r => r.id !== id);
@@ -204,7 +204,7 @@
       }
     }
 
-    // Open add
+
     document.getElementById('openAddResult').onclick = function() {
       document.getElementById('resultSubject').value = '';
       document.getElementById('resultMarks').value = '';
@@ -215,12 +215,12 @@
       showModal();
     };
 
-    // Cancel button
+
     document.getElementById('resultCancel').onclick = function() {
       hideModal();
     };
 
-    // Save button
+
     document.getElementById('resultSave').onclick = function() {
       let studentId = document.getElementById('resultStudent').value;
       let section = document.getElementById('resultSection').value;
@@ -230,15 +230,15 @@
       if (!studentId || !section || !subject || !marks) return;
 
       if (editId) {
-        updateResult(editId, studentId, section, subject, marks); // Update existing
+        updateResult(editId, studentId, section, subject, marks); 
       } else {
-        addResult(studentId, section, subject, marks); // Add new
+        addResult(studentId, section, subject, marks); 
       }
 
       hideModal();
     };
 
-    // Start app
+
     loadData();
     fillDropdowns();
     showResults();

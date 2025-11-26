@@ -72,7 +72,7 @@
   let sections = [];
   let editId = null;
 
-  // Load data
+
   function loadData() {
     let data = localStorage.getItem('students');
     if (data) students = JSON.parse(data);
@@ -81,13 +81,13 @@
     if (secData) sections = JSON.parse(secData);
   }
 
-  // Save data
+
   function saveData() {
     localStorage.setItem('students', JSON.stringify(students));
     localStorage.setItem('sections', JSON.stringify(sections));
   }
 
-  // Show sections
+
   function showSections() {
     let tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
@@ -113,17 +113,17 @@
     });
   }
 
-  // Show modal
+
   function showModal() {
     document.getElementById('modalBackdrop').style.display = 'block';
   }
 
-  // Hide modal
+
   function hideModal() {
     document.getElementById('modalBackdrop').style.display = 'none';
   }
 
-  // Add section
+
   function addSection(name, desc) {
     let section = {
       id: Date.now().toString(),
@@ -135,7 +135,7 @@
     showSections();
   }
 
-  // Edit section
+
   function editSection(id) {
     let section = sections.find(s => s.id === id);
     if (section) {
@@ -148,7 +148,7 @@
     }
   }
 
-  // Update section
+
   function updateSection(id, name, desc) {
     let index = sections.findIndex(s => s.id === id);
     if (index !== -1) {
@@ -156,7 +156,7 @@
       sections[index].name = name;
       sections[index].desc = desc;
 
-      // Update students
+
       students.forEach(s => {
         if (s.section === oldName) s.section = name;
       });
@@ -166,7 +166,7 @@
     }
   }
 
-  // Delete section
+
   function deleteSection(id) {
     let section = sections.find(s => s.id === id);
     if (confirm('Delete section "' + section.name + '"?')) {
@@ -176,7 +176,7 @@
     }
   }
 
-  // Open add
+
   document.getElementById('openAdd').onclick = function() {
     document.getElementById('secName').value = '';
     document.getElementById('secDesc').value = '';
@@ -186,12 +186,12 @@
     showModal();
   };
 
-  // Cancel button
+
   document.getElementById('cancelBtn').onclick = function() {
     hideModal();
   };
 
-  // Save button
+
   document.getElementById('saveBtn').onclick = function() {
     let name = document.getElementById('secName').value.trim();
     let desc = document.getElementById('secDesc').value.trim();
@@ -199,15 +199,15 @@
     if (!name) return;
 
     if (editId) {
-      updateSection(editId, name, desc); // Update existing
+      updateSection(editId, name, desc); 
     } else {
-      addSection(name, desc); // Add new
+      addSection(name, desc); 
     }
 
     hideModal();
   };
 
-  // Start app
+
   loadData();
   showSections();
 </script>

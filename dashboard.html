@@ -88,18 +88,18 @@
     let sections = ['A', 'B', 'C', 'D'];
     let deleteId = null;
 
-    // Load data
+    
     function loadData() {
       let data = localStorage.getItem('students');
       if (data) students = JSON.parse(data);
     }
 
-    // Save data
+
     function saveData() {
       localStorage.setItem('students', JSON.stringify(students));
     }
 
-    // Show table
+
     function showStudents() {
       let tbody = document.getElementById('studentTableBody');
       tbody.innerHTML = '';
@@ -124,7 +124,7 @@
       });
     }
 
-    // Fill sections
+
     function fillSections() {
       let select = document.getElementById('studentSection');
       select.innerHTML = '';
@@ -133,17 +133,17 @@
       });
     }
 
-    // Show modal
+
     function showModal(id) {
       document.getElementById(id).style.display = 'block';
     }
 
-    // Hide modal
+
     function hideModal(id) {
       document.getElementById(id).style.display = 'none';
     }
 
-    // Add student
+
     function addStudent(name, email, section) {
       let student = {
         id: Date.now().toString(),
@@ -157,7 +157,7 @@
       showStudents();
     }
 
-    // Edit student
+
     function editStudent(id) {
       let student = students.find(s => s.id === id);
       if (student) {
@@ -172,7 +172,7 @@
       }
     }
 
-    // Update student
+
     function updateStudent(id, name, email, section) {
       let index = students.findIndex(s => s.id === id);
       if (index !== -1) {
@@ -184,20 +184,20 @@
       }
     }
 
-    // Delete student
+
     function deleteStudent(id) {
       deleteId = id;
       showModal('deleteConfirmModal');
     }
 
-    // Remove student
+
     function removeStudent(id) {
       students = students.filter(s => s.id !== id);
       saveData();
       showStudents();
     }
 
-    // Open add
+
     document.getElementById('openAddStudentModal').onclick = function() {
       document.getElementById('studentForm').reset();
       document.getElementById('studentId').value = '';
@@ -207,18 +207,18 @@
       showModal('studentFormModal');
     };
 
-    // Close form
+
     document.getElementById('closeFormModalBtn').onclick = function() {
       hideModal('studentFormModal');
     };
 
-    // Cancel delete
+
     document.getElementById('cancelDeleteBtn').onclick = function() {
       deleteId = null;
       hideModal('deleteConfirmModal');
     };
 
-    // Confirm delete
+
     document.getElementById('confirmDeleteBtn').onclick = function() {
       if (deleteId) {
         removeStudent(deleteId);
@@ -227,7 +227,7 @@
       hideModal('deleteConfirmModal');
     };
 
-    // Form submit
+
     document.getElementById('studentForm').onsubmit = function(e) {
       e.preventDefault();
       
@@ -237,16 +237,15 @@
       let section = document.getElementById('studentSection').value;
 
       if (id) {
-        updateStudent(id, name, email, section); // Update existing
+        updateStudent(id, name, email, section); 
       } else {
-        addStudent(name, email, section); // Add new
+        addStudent(name, email, section); 
       }
 
       hideModal('studentFormModal');
       document.getElementById('studentForm').reset();
     };
 
-    // Start app
     loadData();
     showStudents();
   </script>

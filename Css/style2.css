@@ -14,7 +14,7 @@ body {
     color: white;
 }
 
-/* Floating Neon Circles */
+
 .circle, .circle2, .circle3 {
     position: absolute;
     border-radius: 50%;
@@ -30,7 +30,7 @@ body {
     100% { transform: translateY(60px) }
 }
 
-/* Glass container */
+
 .container {
     backdrop-filter: blur(14px);
     padding: 20px;
@@ -93,7 +93,7 @@ header .logo {
     transform: scale(1.05);
 }
 
-/* Main button */
+
 .portal-btn {
     background: linear-gradient(90deg, #3b82f6, #a855f7);
     border: none;
@@ -120,7 +120,7 @@ footer {
     margin-bottom: 10px;
 }
 
-/* Text fade animation */
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0px); }

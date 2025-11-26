@@ -69,34 +69,34 @@
   z-index: 60;
 }
 
-/* Section should be positioned relative */
+
 .content {
   position: relative;
   padding: 28px;
 }
 
-/* Modal backdrop inside the section */
+
 .modal-backdrop {
-  position: absolute; /* changed from fixed */
+  position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(15, 23, 42, 0.55);
-  display: none; /* show via JS */
+  display: none; 
   align-items: center;
   justify-content: center;
-  z-index: 10; /* relative to section */
+  z-index: 10; 
 }
 
-/* Modal stays same */
+
 .modal {
   width: 420px;
   background: #fff;
   border-radius: 10px;
   padding: 18px;
   box-shadow: 0 20px 40px rgba(2, 6, 23, 0.4);
-  /* center inside flex parent */
+  
   margin: auto;
 }
 
